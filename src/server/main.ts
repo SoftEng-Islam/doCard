@@ -1,12 +1,14 @@
-import express from 'express';
-import ViteExpress from 'vite-express';
+import express from "express";
+import ViteExpress from "vite-express";
 
-const app = express();
+import dotenv from "dotenv";
+dotenv.config();
 
-app.get('/hello', (_, res) => {
-	res.send('Hello Vite + Vue + TypeScript! and hello islam');
-});
+import app from "./app.js";
+import { connectDB } from "./config/db.js";
 
-ViteExpress.listen(app, 3000, () =>
-	console.log('Server is listening on port 3000...'),
-);
+const PORT = process.env.PORT || 3000;
+
+await connectDB();
+
+ViteExpress.listen(app, 3000, () => console.log(`Server running on http://localhost:${PORT}`));
