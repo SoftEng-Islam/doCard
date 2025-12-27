@@ -1,24 +1,39 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build Output
+coverage/
+dist/
+dist-ssr/
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 lerna-debug.log*
-pagesCreator.sh
-node_modules
-dist
-dist-ssr
+
+# Environment
+.env
+.env.local
 *.local
 
-# Editor directories and files
+# Editor/IDE
+.idea/
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
 *.njsproj
+*.ntvs*
 *.sln
+*.suo
 *.sw?
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Project Specific
+pagesCreator.sh

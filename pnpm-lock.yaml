@@ -53,9 +53,6 @@ importers:
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
       vite-express:
         specifier: ^0.21.1
         version: 0.21.1
@@ -80,6 +77,9 @@ importers:
       vue3-perfect-scrollbar:
         specifier: ^2.0.0
         version: 2.0.0(vue@3.5.25(typescript@5.9.3))
+      vue3-spinners:
+        specifier: ^1.3.3
+        version: 1.3.3(vue@3.5.25(typescript@5.9.3))
     devDependencies:
       '@rushstack/eslint-patch':
         specifier: ^1.15.0
@@ -111,9 +111,6 @@ importers:
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
-      '@types/dotenv':
-        specifier: ^8.2.3
-        version: 8.2.3
       '@types/express':
         specifier: ^5.0.5
         version: 5.0.5
@@ -270,6 +267,9 @@ importers:
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
+      typescript:
+        specifier: ~5.9.3
+        version: 5.9.3
       vite:
         specifier: ^6.4.1
         version: 6.4.1(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.94.2)(terser@5.44.1)(tsx@4.21.0)
@@ -300,6 +300,9 @@ importers:
       vue-tippy:
         specifier: ^6.7.1
         version: 6.7.1(vue@3.5.25(typescript@5.9.3))
+      vue-toastification:
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(vue@3.5.25(typescript@5.9.3))
       vue-tsc:
         specifier: ^2.2.12
         version: 2.2.12(typescript@5.9.3)
@@ -1718,10 +1721,6 @@ packages:
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
 
-  '@types/dotenv@8.2.3':
-    resolution: {integrity: sha512-g2FXjlDX/cYuc5CiQvyU/6kkbP1JtmGzh0obW50zD7OKeILVL0NSpPWLXVfqoAGQjom2/SLLx9zHq0KXvD6mbw==}
-    deprecated: This is a stub types definition. dotenv provides its own type definitions, so you do not need this installed.
-
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
 
@@ -2893,6 +2892,9 @@ packages:
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
+
+  colornames@1.1.1:
+    resolution: {integrity: sha512-/pyV40IrsdulWv+wFPmERh9k/mjsPZ64yUMDmWrtj/k1nmgrzzIENWKdaVKyBbvFdQWqkcaRxr+polCo3VMe7A==}
 
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
@@ -4871,6 +4873,12 @@ packages:
     resolution: {integrity: sha512-pBxcB3LFc8QVgdggvZWyeys+hnrNWg4OcZIU/1X59k5jQdLBlCsYGRQaz234SqoRLTCgMH00fY0xRJH+F9METQ==}
     engines: {node: '>=8'}
 
+  just-range@4.2.0:
+    resolution: {integrity: sha512-z2Ip8H2j7a9Vr8rKFi0IZf4IXn2Yuq2lGZFS41GjfPwksoHWTaTx1xIjU6C0HyQ1jBXEoz/FzjS5eyVXeW19tg==}
+
+  just-zip-it@3.2.0:
+    resolution: {integrity: sha512-ZJxc8mLz8XkaoOegJ237Xuo3ZQB5zUN/8BTXqalBJbh/uj+ahfJbOJKadJPmXDBbxHzh+MQYH43VxV5TlQvlfw==}
+
   kareem@2.6.3:
     resolution: {integrity: sha512-C3iHfuGUXK2u8/ipq9LfjFfXFxAZMQJJq7vLS45r3D9Y2xQ/m4S8zaR4zMLFWh9AsNPXmcFfUDhTEO8UIC/V6Q==}
     engines: {node: '>=12.0.0'}
@@ -5531,6 +5539,9 @@ packages:
     resolution: {integrity: sha512-uksVLsqG3pVdzzPvmAHpBK0wKxYItuzZr7SziusRPoz67tGV8rL1szZ6IdeUrbqLjGDwApBtN29eEE3IqGHOjg==}
     engines: {node: '>=4'}
 
+  outdent@0.8.0:
+    resolution: {integrity: sha512-KiOAIsdpUTcAXuykya5fnVVT+/5uS0Q1mrkRHcF89tpieSmY33O/tmc54CqwA+bfhbtEfZUNLHaPUiB9X3jt1A==}
+
   ow@0.17.0:
     resolution: {integrity: sha512-i3keDzDQP5lWIe4oODyDFey1qVrq2hXKTuTH2VpqwpYtzPiKZt2ziRI4NBQmgW40AnV5Euz17OyWweCb+bNEQA==}
     engines: {node: '>=10'}
@@ -5620,6 +5631,9 @@ packages:
   parse-json@5.2.0:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
     engines: {node: '>=8'}
+
+  parse-unit@1.0.1:
+    resolution: {integrity: sha512-hrqldJHokR3Qj88EIlV/kAyAi/G5R2+R56TBANxNMy0uPlYcttx0jnMW6Yx5KsKPSbC3KddM/7qQm3+0wEXKxg==}
 
   parse5-htmlparser2-tree-adapter@6.0.1:
     resolution: {integrity: sha512-qPuWvbLgvDGilKc5BoicRovlT4MtYT6JfJyBOMDsKoiT+GiuP5qyrPCnR9HcPECIJJmZh5jRndyNThnhhb/vlA==}
@@ -6830,6 +6844,9 @@ packages:
   strnum@1.1.2:
     resolution: {integrity: sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==}
 
+  style-inject@0.3.0:
+    resolution: {integrity: sha512-IezA2qp+vcdlhJaVm5SOdPPTUu0FCEqfNSli2vRuSIBbu5Nq5UvygTk/VzeCqfLz2Atj3dVII5QBKGZRZ0edzw==}
+
   style-value-types@5.1.2:
     resolution: {integrity: sha512-Vs9fNreYF9j6W2VvuDTP7kepALi7sk0xtk2Tu8Yxi9UoajJdEVpNpCov0HsLTqXvNGKX+Uv09pkozVITi1jf3Q==}
 
@@ -7472,6 +7489,11 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
+  vue-toastification@2.0.0-rc.5:
+    resolution: {integrity: sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==}
+    peerDependencies:
+      vue: ^3.0.2
+
   vue-tour@2.0.0:
     resolution: {integrity: sha512-vhKzqdhunQ3EoO1733UxhOB389u3EKv2X8JqYhX4tIq4ilqlZtnY3azPFBYPFmnAqHn5RyZBrP2CpqSaxTs8og==}
 
@@ -7485,6 +7507,11 @@ packages:
     resolution: {integrity: sha512-nSWVcRyViCgt0Pe3RhU3w/BllLcFSrEzYOGlRBjSyhVmiZlERHHziffW+9P8L0IMEWouC5t+uYrgNJGSAElqMA==}
     peerDependencies:
       vue: ^3.0.0
+
+  vue3-spinners@1.3.3:
+    resolution: {integrity: sha512-2kY/V63k0Kqe6ZPRLDDz+gOm4l3WRYk16HfmZkB/f2IJ5sXFUjC3VnpNXsYpDMdypNJG6/VKsgNhRXLSz0AZ6w==}
+    peerDependencies:
+      vue: ^3
 
   vue@2.7.16:
     resolution: {integrity: sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==}
@@ -9103,10 +9130,6 @@ snapshots:
       '@types/ms': 2.1.0
 
   '@types/deep-eql@4.0.2': {}
-
-  '@types/dotenv@8.2.3':
-    dependencies:
-      dotenv: 8.6.0
 
   '@types/eslint-scope@3.7.7':
     dependencies:
@@ -10796,6 +10819,8 @@ snapshots:
   colord@2.9.3: {}
 
   colorette@2.0.20: {}
+
+  colornames@1.1.1: {}
 
   combined-stream@1.0.8:
     dependencies:
@@ -12792,6 +12817,10 @@ snapshots:
 
   junk@3.1.0: {}
 
+  just-range@4.2.0: {}
+
+  just-zip-it@3.2.0: {}
+
   kareem@2.6.3: {}
 
   keyv@3.0.0:
@@ -13403,6 +13432,8 @@ snapshots:
     dependencies:
       arch: 2.2.0
 
+  outdent@0.8.0: {}
+
   ow@0.17.0:
     dependencies:
       type-fest: 0.11.0
@@ -13483,6 +13514,8 @@ snapshots:
       error-ex: 1.3.4
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
+
+  parse-unit@1.0.1: {}
 
   parse5-htmlparser2-tree-adapter@6.0.1:
     dependencies:
@@ -14682,6 +14715,8 @@ snapshots:
 
   strnum@1.1.2: {}
 
+  style-inject@0.3.0: {}
+
   style-value-types@5.1.2:
     dependencies:
       hey-listen: 1.0.8
@@ -15399,6 +15434,10 @@ snapshots:
       tippy.js: 6.3.7
       vue: 3.5.25(typescript@5.9.3)
 
+  vue-toastification@2.0.0-rc.5(vue@3.5.25(typescript@5.9.3)):
+    dependencies:
+      vue: 3.5.25(typescript@5.9.3)
+
   vue-tour@2.0.0:
     dependencies:
       '@popperjs/core': 2.11.8
@@ -15415,6 +15454,16 @@ snapshots:
   vue3-perfect-scrollbar@2.0.0(vue@3.5.25(typescript@5.9.3)):
     dependencies:
       perfect-scrollbar: 1.5.6
+      vue: 3.5.25(typescript@5.9.3)
+
+  vue3-spinners@1.3.3(vue@3.5.25(typescript@5.9.3)):
+    dependencies:
+      colornames: 1.1.1
+      just-range: 4.2.0
+      just-zip-it: 3.2.0
+      outdent: 0.8.0
+      parse-unit: 1.0.1
+      style-inject: 0.3.0
       vue: 3.5.25(typescript@5.9.3)
 
   vue@2.7.16:

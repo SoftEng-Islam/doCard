@@ -1,157 +1,243 @@
-# Flashcard App
+# DoCard Project Map & Implementation Plan
 
-> DoCard Is an application to help people learn and study and remember words phrases and things
+> **DoCard**: A focused, efficient application for memorizing words, phrases, and concepts.
+> *Simple. Fast. Distraction-free.*
 
-## Purpose
+## 1. Project Vision & Goals
 
-Simple app to memorize English words.
+**Core Philosophy**: Simplicity first. Avoid bloat. Focus on the core loop of creation and review.
 
-## 1. Problem Statement (Clear and Narrow)
+**Success Criteria**: The application is considered "Complete" when a user can:
+1.  **Manage Content**: Create Groups (Decks) and Cards seamlessly.
+2.  **Study**: Engage in a focused study session with a clean UI.
+3.  **Sort & Search**: Organize content effectively to find what they need.
+4.  **Persist**: Save data reliably (initially local/single DB, eventually multi-user).
+5.  **Offline & Flexible**: Work offline and import data easily (CSV).
 
-> Learners need a simple way to memorize English words without complex apps.
-> This app allows users to create flashcards and review them quickly.
+---
 
-**Non-goal:** Competing with Anki, spaced repetition systems, or gamification.
+## 2. Technology Stack
 
-## 2. The app is “done” when all items below work
+We will use a modern, type-safe full-stack environment.
 
-User can:
+### **Frontend** (Client)
+-   **Framework**: Vue 3 (Script Setup, Composition API)
+-   **Language**: TypeScript
+-   **State Management**: Pinia
+-   **Routing**: Vue Router
+-   **Styling**: Tailwind CSS v4 + DaisyUI (Themes support)
+-   **Animations**: Animate.css, @vueuse/motion
+-   **Utilities**: VueUse, Axios, Tiip.js (Tooltips)
+-   **UX Polish**: vue3-spinners, vue-toastification, vue3-perfect-scrollbar
 
-- Login/SignUp to Use The Application
-- The Flashcard manager page
-  - First must create a group and give it a name to start add cards into it
-  - inside the group can add an English word and add its meaning
-  - view flashcards one by one
-  - flip card (word ⇄ meaning)
-  - delete a card or the whole group or move selected card or all cards into a different group
-- The study Page
-  - Enter a group
-  - Select the study type
-    - Select the correct meaning to a specific card
-    - Write the correct meaning
-    - Sort The Cards
+### **Backend** (Server)
+-   **Runtime**: Node.js
+-   **Framework**: Express.js
+-   **Language**: TypeScript
+-   **Database**: MongoDB (via Mongoose)
+-   **Validation**: Zod
+-   **Docs**: Swagger/OpenAPI (Optional but good for API definition)
 
-**Explicitly excluded (for now):**
+---
 
-- login / accounts
-- spaced repetition
-- tags, decks, levels
-- statistics
-- animations
-- mobile app
+## 3. Development Roadmap
 
-## 3. User Flow (Simple and Linear)
+### ✅ Phase 1: MVP Core (The "Walking Skeleton")
+*Goal: A working single-user application running locally.*
+
+- [ ] **Architecture**: Setup Monorepo structure (Client/Server/Shared).
+- [ ] **Database**: Connect to local MongoDB.
+- [ ] **Backend Basic**: Implement CRUD for `Groups` and `Cards`.
+- [ ] **Frontend Basic**:
+    -   Landing Page (Simple "Enter App" button).
+    -   Dashboard (List of Groups).
+    -   Group Detail (List of Cards + Add Card Form).
+    -   Card Viewer (Front/Back flip).
+
+### 🚀 Phase 2: The "Study" & "Sort" Experience
+*Goal: Make it actually useful for learning and organizing.*
+
+- [ ] **Sorting & Filtering**:
+    -   **Sort By**: Date Created (Newest/Oldest), Alphabetical (A-Z/Z-A).
+    -   **Filter By**: Status (New/Learning/Mastered).
+- [ ] **Study Modes** (Inspired by Flashcard World):
+    -   **Classic Flashcard**: Flip to see answer.
+    -   **Writing Review**: Type the answer and check against the back of the card.
+    -   **Multiple Choice**: Select the correct answer from generated options (distractors).
+- [ ] **UI/UX Polish**:
+    -   Transitions between pages.
+    -   Card flip animations.
+    -   Loading states (Spinners).
+    -   Toast notifications for success/error.
+
+### 📦 Phase 3: Advanced Features ("Flashcard World" Parity)
+*Goal: Add power-user features like portability and smart learning.*
+
+- [ ] **Data Portability**:
+    -   **CSV Import/Export**: Upload a CSV to bulk-create cards.
+    -   **Backup**: Export all data to a JSON file.
+- [ ] **Spaced Repetition System (SRS)**:
+    -   Implement a basic algorithm (like SM-2) to schedule reviews based on performance.
+    -   "Due Items" view on the Dashboard.
+- [ ] **Offline Capabilities**:
+    -   PWA (Progressive Web App) manifest.
+    -   Service Worker for offline caching.
+
+### 🔐 Phase 4: Multi-User (The "Product")
+*Goal: Allow multiple users to have private data.*
+
+- [ ] **Auth Layer**: JWT-based Authentication.
+- [ ] **User Model**: Create User schema.
+- [ ] **Data Ownership**: Associate Groups/Cards with UserIDs.
+- [ ] **Auth UI**: Login/Register pages.
+- [ ] **Community**: Share decks with other users (public/private toggle).
+
+---
+
+## 4. Sorting & Filtering Specs
+
+To help users manage large decks, we will implement the following:
+
+### **Dashboard (Groups)**
+-   **Sort**:
+    -   `Last Edited`: Show groups you worked on recently first.
+    -   `Name (A-Z)`: Alphabetical order.
+    -   `Card Count`: Largest decks first.
+
+### **Card List / Study Mode**
+-   **Sort**:
+    -   `Added Time`: See the most recently added words.
+    -   `Difficulty`: (Phase 3) Show "Hard" words first.
+    -   `Random`: Essentials for studying.
+-   **Search**:
+    -   Real-time text filter (matches `front` or `back` of card).
+
+---
+
+## 5. API Design (RESTful)
+
+### **Auth Routes**
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/me` (Verify token)
+
+### **Group Routes**
+- `GET /api/groups` (List user's groups)
+- `GET /api/groups/:id` (Get details)
+- `POST /api/groups` (Create)
+- `PUT /api/groups/:id` (Update)
+- `DELETE /api/groups/:id` (Delete - cascade delete cards?)
+- `POST /api/groups/import` (CSV Import)
+
+### **Card Routes**
+- `GET /api/groups/:groupId/cards` (Get cards for a specific group, supports `?sort=createdAt&order=desc`)
+- `POST /api/cards` (Create)
+- `PUT /api/cards/:id` (Update content, move groups, or update SRS status)
+- `DELETE /api/cards/:id` (Delete)
+
+---
+
+## 6. Detailed Folder & File Structure
+
+This structure is designed for scalability and separation of concerns.
 
 ```text
-Open App
- → Add Word + Meaning
- → Card appears in list
- → Click card
- → Flip to see meaning
- → Next / Delete
-```
-
-## 4. Data Model (Minimal)
-
-You only need **one collection**.
-
-### Flashcard (MongoDB)
-
-```js
-{
-  _id: ObjectId,
-  word: String,
-  meaning: String,
-  createdAt: Date
-}
-```
-
-No userId. No deckId. No metadata.
-
-## 5. API Design (Express)
-
-Keep it boring and RESTful.
-GET    /api/cards        → list all cards
-POST   /api/cards        → add new card
-DELETE /api/cards/:id   → delete card
-
-That’s it. No update endpoint for MVP.
-
-## 6. Frontend Structure (Vue)
-
-Use **one page only**.
-
-### Components
-
-- `AddCardForm.vue`
-- `FlashcardViewer.vue`
-- `FlashcardItem.vue` (optional)
-- `App.vue`
-
-## **Stack** Technologies and Tools that we will use
-
-- Typescript
-- Vuejs
-- vue-router
-- PiniaJs
-- axios
-- @vueuse/motion
-- tippy.js
-- vue-tours
-- vue3-perfect-scrollbar
-- vue3-spinners
-- vue-lazyload
-- vue-toastification
-- Tailwindcss v4
-- daisyui
-- animate.css
-- ExpressJs
-- express-async-handler
-- mongoose
-
-## The Project Structure
-
-```bash
-├── package.json
-├── package.old.json
-├── pnpm-lock.yaml
-├── ProjectMap.md
-├── public
-│   └── vite.svg
+/
+├── package.json               # Root scripts (start:all, build:all)
+├── tsconfig.json              # Base TypeScript config
+├── .gitignore
 ├── README.md
-├── shared
-│   ├── constants
-│   │   └── index.ts
-│   └── models
-│       ├──
-│       └── user-data.ts
-├── src
-│   ├── client
-│   │   ├── App.old.vue
-│   │   ├── App.vue
-│   │   ├── assets
-│   │   ├── components
-│   │   ├── main.ts
-│   │   ├── services
-│   │   ├── style.css
-│   │   ├── tsconfig.json
-│   │   └── vite-env.d.ts
-│   └── server
-│       ├── app.ts
-│       ├── config
-│       ├── controllers
-│       ├── main.ts
-│       ├── middleware
-│       ├── models
-│       ├── routes
-│       └── utils
-├── tsconfig.json
-└── vite.config.ts
+├── ProjectMap.md
+│
+├── shared/                    # [SHARED] Types and Constants
+│   ├── index.ts               # Export all
+│   ├── types/
+│   │   ├── models.ts          # export interface IUser, IGroup, ICard
+│   │   └── api.ts             # export interface ApiError, ApiResponse<T>
+│   └── constants/
+│       └── validation.ts      # Shared Zod schemas (e.g., loginSchema)
+│
+├── src/
+│   ├── client/                # [CLIENT] Vue 3 Application
+│   │   ├── index.html         # Entry HTML
+│   │   ├── vite.config.ts     # Vite Configuration
+│   │   ├── tailwind.config.ts # Tailwind Configuration
+│   │   ├── main.ts            # App Entry Point (mounts App.vue)
+│   │   ├── App.vue            # Root Component (Router View + Layout)
+│   │   ├── env.d.ts           # Type definitions
+│   │   │
+│   │   ├── assets/            # Static assets
+│   │   │   └── logo.svg
+│   │   │
+│   │   ├── components/        # [COMPONENTS] Reusable UI Components
+│   │   │   ├── ui/            # Generic UI (Buttons, Inputs)
+│   │   │   │   ├── BaseButton.vue
+│   │   │   │   ├── BaseInput.vue
+│   │   │   │   └── ModalDialog.vue
+│   │   │   │
+│   │   │   ├── layout/        # Layout components
+│   │   │   │   ├── NavBar.vue    # Top navigation
+│   │   │   │   └── Footer.vue
+│   │   │   │
+│   │   │   ├── groups/        # Domain-specific: Groups
+│   │   │   │   ├── GroupCard.vue # Display a group summary
+│   │   │   │   └── GroupForm.vue # Create/Edit group
+│   │   │   │
+│   │   │   └── cards/         # Domain-specific: Cards
+│   │   │       ├── FlashCard.vue # The flippable card
+│   │   │       ├── CardList.vue  # List view for management
+│   │   │       ├── CardForm.vue  # Add/Edit card
+│   │   │       └── CSVImporter.vue # [NEW] Bulk upload UI
+│   │   │
+│   │   ├── pages/             # [PAGES] View Controllers
+│   │   │   ├── HomeView.vue      # Landing Page
+│   │   │   ├── LoginView.vue     # Auth
+│   │   │   ├── RegisterView.vue  # Auth
+│   │   │   ├── DashboardView.vue # Main User Dashboard
+│   │   │   ├── GroupDetailView.vue # Use list of cards
+│   │   │   └── StudyView.vue     # The active study session
+│   │   │
+│   │   ├── router/            # [ROUTER]
+│   │   │   └── index.ts       # Route definitions & Guard checks
+│   │   │
+│   │   ├── stores/            # [STORES] Pinia State Management
+│   │   │   ├── auth.store.ts  # Current user, token, login()
+│   │   │   ├── groups.store.ts # Groups list, caching
+│   │   │   └── study.store.ts # Current active session state
+│   │   │
+│   │   └── services/          # [SERVICES] API Communication
+│   │       ├── api.client.ts  # Axios instance (interceptors)
+│   │       ├── auth.service.ts
+│   │       └── data.service.ts # Groups/Cards CRUD
+│   │
+│   └── server/                # [SERVER] Express Backend
+│       ├── package.json
+│       ├── nodemon.json
+│       ├── app.ts             # Express App setup (middleware)
+│       ├── server.ts          # Server entry (listens on port)
+│       │
+│       ├── config/            # [CONFIG]
+│       │   ├── db.ts          # Mongoose connection
+│       │   └── env.ts         # Environment variables (PORT, MONGO_URI)
+│       │
+│       ├── models/            # [MODELS] Mongoose Schemas
+│       │   ├── User.ts
+│       │   ├── Group.ts
+│       │   └── Card.ts
+│       │
+│       ├── routes/            # [ROUTES] Route Definition
+│       │   ├── index.ts       # Master router
+│       │   ├── auth.routes.ts
+│       │   ├── groups.routes.ts
+│       │   └── cards.routes.ts
+│       │
+│       ├── controllers/       # [CONTROLLERS] Request Logic
+│       │   ├── auth.controller.ts  # login, register
+│       │   ├── group.controller.ts # getGroups, createGroup
+│       │   └── card.controller.ts  # getCards, createCard
+│       │
+│       └── middleware/        # [MIDDLEWARE]
+│           ├── auth.middleware.ts  # Validates JWT
+│           ├── error.middleware.ts # Global error handler
+│           └── validate.ts         # Zod validation wrapper
 ```
-
-## Page in This Project
-
-- HomePage(Landing Page)
-- About Page
-- Contact US
--
