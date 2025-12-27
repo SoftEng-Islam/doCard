@@ -8,6 +8,8 @@ import app from "./app.js";
 import { connectDB } from "./config/db.js";
 
 const PORT = process.env.PORT || 3000;
+console.log("Starting server...");
+console.log(`Port: ${PORT}`);
 
 await connectDB();
 

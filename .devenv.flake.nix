@@ -17,7 +17,7 @@
   ];
   hostname = "nixxin";
   username = "softeng";
-  git_root = null;
+  git_root = "/data/github/proj.doCard";
   secretspec = null;
 };
     in
@@ -54,7 +54,7 @@
   ];
   hostname = "nixxin";
   username = "softeng";
-  git_root = null;
+  git_root = "/data/github/proj.doCard";
   secretspec = null;
 };
       devenv =

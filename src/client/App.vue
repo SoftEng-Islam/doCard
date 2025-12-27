@@ -1,62 +1,37 @@
-<script setup lang="ts">
-import { ref } from "vue";
+<script setup>
+import { ref, onMounted } from 'vue';
+import AddCardForm from './components/AddCardForm.vue';
+import FlashcardViewer from './components/FlashcardViewer.vue';
+import api from './services/api';
 
-import HelloWorld from "./components/HelloWorld.vue";
+const cards = ref([]);
+const loading = ref(true);
 
-const Data = ref('');
-const getData = async () => {
-	try {
+async function loadCards() {
+	loading.value = true;
+	cards.value = await api.getCards();
+	loading.value = false;
+}
 
-		// "https://api.github.com/users/softeng";
-		const response = await fetch(`http://localhost:3000/hello`);
-		const data = await response.text();
+async function handleAdd(card) {
+	cards.value.unshift(card);
+}
 
-		if (response.ok) {
-			Data.value = data;
-			// error.value = null;
-		} else {
-			// userProfile.value = null;
-			// error.value = `Error: ${data}`;
-		}
+async function handleDelete(id) {
+	cards.value = cards.value.filter(c => c._id !== id);
+}
 
-
-	} catch (err) {
-		console.error('Error fetching data:', err);
-		// error.value = 'An error occurred while fetching data.';
-	}
-};
-
-
+onMounted(loadCards);
 </script>
 
 <template>
-	h1 Using fetch
-	<button @click="getData"> fetch </button>
-	<div>
-		<a href="https://vitejs.dev" target="_blank">
-			<img src="/vite.svg" class="logo" alt="Vite logo" />
-		</a>
-		<a href="https://vuejs.org/" target="_blank">
-			<img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-		</a>
-	</div>
-	<HelloWorld msg="Vite + Vue" />
-	<h2>{{ Data }}</h2>
+	<main class="max-w-md mx-auto p-4 space-y-6">
+		<h1 class="text-xl font-bold">Flashcards</h1>
+
+		<AddCardForm @created="handleAdd" />
+
+		<p v-if="loading">Loading...</p>
+
+		<FlashcardViewer v-else :cards="cards" @delete="handleDelete" />
+	</main>
 </template>
-
-<style scoped>
-.logo {
-	height: 6em;
-	padding: 1.5em;
-	will-change: filter;
-	transition: filter 300ms;
-}
-
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-	filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

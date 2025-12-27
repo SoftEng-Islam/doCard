@@ -1,5 +1,5 @@
-import Flashcard from "../models/Flashcard.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
+import Flashcard from "../models/Flashcard.ts";
+import { asyncHandler } from "../utils/asyncHandler.ts";
 
 export const getCards = asyncHandler(async (req, res) => {
 	const cards = await Flashcard.find().sort({ createdAt: -1 });
