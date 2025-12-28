@@ -1,12 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import api from '@/services/api';
+import api from '@/features/cards/services/cards.service';
 
-const emit = defineEmits(['created']);
+const emit = defineEmits<{
+	(e: 'success', card: any): void;
+}>();
 
 const word = ref('');
 const meaning = ref('');
-const error = ref(null);
+const error = ref<string | null>(null);
 
 async function submit() {
 	error.value = null;
@@ -21,7 +23,7 @@ async function submit() {
 		meaning: meaning.value
 	});
 
-	emit('created', card);
+	emit('success', card);
 
 	word.value = '';
 	meaning.value = '';

@@ -1,19 +1,101 @@
-# Vue 3 + TypeScript + Vite
+# doCard 🎴
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A modern, full-stack flashcard learning assistant built with a focus on speed, modularity, and a premium user experience.
 
-## Recommended IDE Setup
+## 🚀 Key Features
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- **GraphQL API**: Powered by Apollo Server for efficient, typed data fetching.
+- **Modern Frontend**: Built with Vue 3, Vite, and Apollo Client.
+- **Feature-Based Architecture**: Modular frontend structure for high maintainability.
+- **Secure Authentication**: JWT-based auth with `bcryptjs` password hashing.
+- **Flashcard Management**: Create, view, and delete flashcards with a sleek UI.
+- **Robust State Management**: Leveraging Pinia for reactive global state.
 
-## Type Support For `.vue` Imports in TS
+## 🛠️ Tech Stack
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- **Frontend**: Vue 3, Apollo Client, Pinia, Vue Router, Tailwind CSS.
+- **Backend**: Node.js, Express, Apollo Server (v3/v4).
+- **Database**: MongoDB with Mongoose ODM.
+- **Tools**: TypeScript, pnpm, Vite.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+---
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-# doCard
+## 🏁 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+)
+- [pnpm](https://pnpm.io/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
+
+### Installation
+
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd proj.doCard
+    ```
+
+2.  **Install dependencies**:
+    ```bash
+    pnpm install
+    ```
+
+3.  **Configure Environment Variables**:
+    Create a `.env` file in the root directory and add the following:
+    ```env
+    PORT=3000
+    MONGODB_URI=mongodb://localhost:27018/docard  # Matches your local mongod port
+    JWT_SECRET=your_super_secret_key
+    ```
+
+---
+
+## 🏃 Running the Application
+
+### 1. Start MongoDB
+Ensure your MongoDB data and socket directories exist, then start the daemon:
+```bash
+mkdir -p mongodb-data mongodb-socket
+mongod --dbpath ./mongodb-data --port 27018 --unixSocketPrefix ./mongodb-socket
+```
+
+### 2. Start the Development Server
+In a new terminal window, run:
+```bash
+pnpm run dev
+```
+- **App**: [http://localhost:3000](http://localhost:3000)
+- **GraphQL Interactive Sandbox**: [http://localhost:3000/graphql](http://localhost:3000/graphql)
+
+---
+
+## 📁 Project Structure
+
+### Frontend (`src/client`)
+The frontend follows a **Feature-Based Architecture** to keep the domain logic isolated and scalable.
+- `features/auth`: Login, Registration, and User state.
+- `features/cards`: Flashcard components and GraphQL services.
+- `features/shared`: Reusable UI components (buttons, inputs), layout (header/footer), and global theme controllers.
+- `pages`: Root view components (Dashboard, Home, Login).
+
+### Backend (`src/server`)
+- `graphql/`: Contains the GraphQL schema (`typeDefs.ts`) and business logic (`resolvers.ts`).
+- `models/`: Mongoose schemas for Users and Cards.
+- `middleware/`: Express middleware for authentication and logging.
+
+---
+
+## 🧪 Development Commands
+
+- `pnpm run dev`: Starts Express and Vite in development mode (with HMR).
+- `pnpm run build`: Compiles the frontend for production.
+- `pnpm run lint`: Runs ESLint to check for code quality issues.
+
+---
+
+## 📜 Usage Tips
+
+- **API Testing**: Use the Apollo Sandbox at `/graphql` to test queries like `getCards` or mutations like `login`.
+- **Theme**: The application includes a premium theme controller found in `features/shared/themeController`.
+- **Aliases**: Use `@/` to reference the `src/client` directory and `shared/` to reference the root shared folder.

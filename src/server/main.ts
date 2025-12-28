@@ -1,8 +1,8 @@
 import express from 'express';
 import ViteExpress from 'vite-express';
 
-import dotenv from 'dotenv';
-dotenv.config();
+import "dotenv/config";
+
 
 import app from './app.ts';
 import { connectDB } from './config/db.ts';
@@ -12,5 +12,9 @@ console.log('Starting server...');
 console.log(`Port: ${PORT}`);
 
 await connectDB();
+
+import { createApolloServer } from './graphql/index.ts';
+const server = await createApolloServer();
+server.applyMiddleware({ app: app as any });
 
 ViteExpress.listen(app, 3000, () => console.log(`Server running on http://localhost:${PORT}`));

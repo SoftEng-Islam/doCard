@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import type { IUserResponse } from '../../../shared/types/models';
-import { loginUser, registerUser, getCurrentUser } from '../services/auth.service';
+import type { IUserResponse } from 'shared/types/models';
+import { loginUser, registerUser, getCurrentUser } from './services/auth.service';
 
 export const useAuthStore = defineStore('auth', () => {
 	// State
@@ -31,7 +31,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 			return true;
 		} catch (err: any) {
-			error.value = err.response?.data?.message || 'Login failed';
+			error.value = err.message || 'Login failed';
 			console.error('Login error:', err);
 			return false;
 		} finally {
@@ -56,7 +56,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 			return true;
 		} catch (err: any) {
-			error.value = err.response?.data?.message || 'Registration failed';
+			error.value = err.message || 'Registration failed';
 			console.error('Registration error:', err);
 			return false;
 		} finally {

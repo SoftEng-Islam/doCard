@@ -15,7 +15,16 @@
     ],
     "skipLibCheck": true,
     "noEmit": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/client/*"
+      ],
+      "shared/*": [
+        "shared/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",

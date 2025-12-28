@@ -25,33 +25,17 @@
 					<!-- Email input -->
 					<div class="space-y-2">
 						<label class="block text-sm font-medium text-white/90">Email</label>
-						<input
-							v-model="email"
-							type="email"
-							required
-							placeholder="your@email.com"
-							class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-						/>
+						<input v-model="email" type="email" required placeholder="your@email.com" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all" />
 					</div>
 
 					<!-- Password input -->
 					<div class="space-y-2">
 						<label class="block text-sm font-medium text-white/90">Password</label>
-						<input
-							v-model="password"
-							type="password"
-							required
-							placeholder="••••••••"
-							class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-						/>
+						<input v-model="password" type="password" required placeholder="••••••••" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all" />
 					</div>
 
 					<!-- Submit button -->
-					<button
-						type="submit"
-						:disabled="loading"
-						class="w-full py-3 px-6 bg-white text-purple-600 rounded-xl font-semibold hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-					>
+					<button type="submit" :disabled="loading" class="w-full py-3 px-6 bg-white text-purple-600 rounded-xl font-semibold hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
 						<span v-if="loading">Signing in...</span>
 						<span v-else>Sign In</span>
 					</button>
@@ -74,7 +58,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '../stores/auth.store';
+import { useAuthStore } from '@/features/auth/auth.store';
 
 const router = useRouter();
 const authStore = useAuthStore();

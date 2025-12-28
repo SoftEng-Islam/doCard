@@ -30,62 +30,31 @@
 					<!-- Username input -->
 					<div class="space-y-2">
 						<label class="block text-sm font-medium text-white/90">Username</label>
-						<input
-							v-model="username"
-							type="text"
-							required
-							minlength="3"
-							placeholder="johndoe"
-							class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-						/>
+						<input v-model="username" type="text" required minlength="3" placeholder="johndoe" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all" />
 					</div>
 
 					<!-- Email input -->
 					<div class="space-y-2">
 						<label class="block text-sm font-medium text-white/90">Email</label>
-						<input
-							v-model="email"
-							type="email"
-							required
-							placeholder="your@email.com"
-							class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-						/>
+						<input v-model="email" type="email" required placeholder="your@email.com" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all" />
 					</div>
 
 					<!-- Password input -->
 					<div class="space-y-2">
 						<label class="block text-sm font-medium text-white/90">Password</label>
-						<input
-							v-model="password"
-							type="password"
-							required
-							minlength="6"
-							placeholder="••••••••"
-							class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-						/>
+						<input v-model="password" type="password" required minlength="6" placeholder="••••••••" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all" />
 						<p class="text-xs text-white/60">Minimum 6 characters</p>
 					</div>
 
 					<!-- Confirm Password input -->
 					<div class="space-y-2">
 						<label class="block text-sm font-medium text-white/90">Confirm Password</label>
-						<input
-							v-model="confirmPassword"
-							type="password"
-							required
-							placeholder="••••••••"
-							class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-							:class="{ 'border-red-500/50': passwordMismatch }"
-						/>
+						<input v-model="confirmPassword" type="password" required placeholder="••••••••" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all" :class="{ 'border-red-500/50': passwordMismatch }" />
 						<p v-if="passwordMismatch" class="text-xs text-red-300">Passwords do not match</p>
 					</div>
 
 					<!-- Submit button -->
-					<button
-						type="submit"
-						:disabled="loading || passwordMismatch"
-						class="w-full py-3 px-6 bg-white text-purple-600 rounded-xl font-semibold hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-					>
+					<button type="submit" :disabled="loading || passwordMismatch" class="w-full py-3 px-6 bg-white text-purple-600 rounded-xl font-semibold hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
 						<span v-if="loading">Creating account...</span>
 						<span v-else>Sign Up</span>
 					</button>
@@ -108,7 +77,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '../stores/auth.store';
+import { useAuthStore } from '@/features/auth/auth.store';
 
 const router = useRouter();
 const authStore = useAuthStore();

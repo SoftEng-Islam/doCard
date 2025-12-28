@@ -3,9 +3,18 @@ node_modules/
 .pnpm-store/
 
 # Build Output
-coverage/
 dist/
 dist-ssr/
+coverage/
+
+# Database / Local Storage
+mongodb-data/
+mongodb-socket/
+
+# Environment Variables
+.env
+.env.local
+*.local
 
 # Logs
 logs/
@@ -16,12 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Environment
-.env
-.env.local
-*.local
-
-# Editor/IDE
+# Editor & IDE
 .idea/
 .vscode/*
 !.vscode/extensions.json
@@ -31,9 +35,16 @@ lerna-debug.log*
 *.suo
 *.sw?
 
-# OS Files
+# System Files
 .DS_Store
 Thumbs.db
+
+# Developer Tools
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+.direnv/
+.pre-commit-config.yaml
 
 # Project Specific
 pagesCreator.sh

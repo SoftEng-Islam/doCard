@@ -1,13 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue';
-import Flashcard from './Flashcard.vue';
-import api from '@/services/api';
+import Flashcard from './FlashCard.vue';
+import api from '@/features/cards/services/cards.service';
 
-const props = defineProps({
-	cards: Array
-});
+import type { ICard } from 'shared/types/models';
 
-const emit = defineEmits(['delete']);
+const props = defineProps<{
+	cards: ICard[];
+}>();
+
+const emit = defineEmits<{
+	(e: 'delete', id: string): void;
+}>();
 
 const index = ref(0);
 
@@ -20,7 +24,7 @@ watch(
 	}
 );
 
-async function remove(id) {
+async function remove(id: string) {
 	await api.deleteCard(id);
 	emit('delete', id);
 }
