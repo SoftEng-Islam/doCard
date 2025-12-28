@@ -7,12 +7,13 @@
 
 **Core Philosophy**: Simplicity first. Avoid bloat. Focus on the core loop of creation and review.
 
-**Success Criteria**: The application is considered "Complete" when a user can:
-1.  **Manage Content**: Create Groups (Decks) and Cards seamlessly.
-2.  **Study**: Engage in a focused study session with a clean UI.
-3.  **Sort & Search**: Organize content effectively to find what they need.
-4.  **Persist**: Save data reliably (initially local/single DB, eventually multi-user).
-5.  **Offline & Flexible**: Work offline and import data easily (CSV).
+> **Success Criteria**: The application is considered "Complete" when a user can:
+
+1. **Manage Content**: Create Groups (Decks) and Cards seamlessly.
+2. **Study**: Engage in a focused study session with a clean UI.
+3. **Sort & Search**: Organize content effectively to find what they need.
+4. **Persist**: Save data reliably (initially local/single DB, eventually multi-user).
+5. **Offline & Flexible**: Work offline and import data easily (CSV).
 
 ---
 
@@ -21,69 +22,75 @@
 We will use a modern, type-safe full-stack environment.
 
 ### **Frontend** (Client)
--   **Framework**: Vue 3 (Script Setup, Composition API)
--   **Language**: TypeScript
--   **State Management**: Pinia
--   **Routing**: Vue Router
--   **Styling**: Tailwind CSS v4 + DaisyUI (Themes support)
--   **Animations**: Animate.css, @vueuse/motion
--   **Utilities**: VueUse, Axios, Tiip.js (Tooltips)
--   **UX Polish**: vue3-spinners, vue-toastification, vue3-perfect-scrollbar
+
+- **Framework**: Vue 3 (Script Setup, Composition API)
+- **Language**: TypeScript
+- **State Management**: Pinia
+- **Routing**: Vue Router
+- **Styling**: Tailwind CSS v4 + DaisyUI (Themes support)
+- **Animations**: Animate.css, @vueuse/motion
+- **Utilities**: VueUse, Axios, Tiip.js (Tooltips)
+- **UX Polish**: vue3-spinners, vue-toastification, vue3-perfect-scrollbar
 
 ### **Backend** (Server)
--   **Runtime**: Node.js
--   **Framework**: Express.js
--   **Language**: TypeScript
--   **Database**: MongoDB (via Mongoose)
--   **Validation**: Zod
--   **Docs**: Swagger/OpenAPI (Optional but good for API definition)
+
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Language**: TypeScript
+- **Database**: MongoDB (via Mongoose)
+- **Validation**: Zod
+- **Docs**: Swagger/OpenAPI (Optional but good for API definition)
 
 ---
 
 ## 3. Development Roadmap
 
 ### ✅ Phase 1: MVP Core (The "Walking Skeleton")
+
 *Goal: A working single-user application running locally.*
 
 - [ ] **Architecture**: Setup Monorepo structure (Client/Server/Shared).
 - [ ] **Database**: Connect to local MongoDB.
 - [ ] **Backend Basic**: Implement CRUD for `Groups` and `Cards`.
 - [ ] **Frontend Basic**:
-    -   Landing Page (Simple "Enter App" button).
-    -   Dashboard (List of Groups).
-    -   Group Detail (List of Cards + Add Card Form).
-    -   Card Viewer (Front/Back flip).
+  - Landing Page (Simple "Enter App" button).
+  - Dashboard (List of Groups).
+  - Group Detail (List of Cards + Add Card Form).
+  - Card Viewer (Front/Back flip).
 
 ### 🚀 Phase 2: The "Study" & "Sort" Experience
+
 *Goal: Make it actually useful for learning and organizing.*
 
 - [ ] **Sorting & Filtering**:
-    -   **Sort By**: Date Created (Newest/Oldest), Alphabetical (A-Z/Z-A).
-    -   **Filter By**: Status (New/Learning/Mastered).
+  - **Sort By**: Date Created (Newest/Oldest), Alphabetical (A-Z/Z-A).
+  - **Filter By**: Status (New/Learning/Mastered).
 - [ ] **Study Modes** (Inspired by Flashcard World):
-    -   **Classic Flashcard**: Flip to see answer.
-    -   **Writing Review**: Type the answer and check against the back of the card.
-    -   **Multiple Choice**: Select the correct answer from generated options (distractors).
+  - **Classic Flashcard**: Flip to see answer.
+  - **Writing Review**: Type the answer and check against the back of the card.
+  - **Multiple Choice**: Select the correct answer from generated options (distractors).
 - [ ] **UI/UX Polish**:
-    -   Transitions between pages.
-    -   Card flip animations.
-    -   Loading states (Spinners).
-    -   Toast notifications for success/error.
+  - Transitions between pages.
+  - Card flip animations.
+  - Loading states (Spinners).
+  - Toast notifications for success/error.
 
 ### 📦 Phase 3: Advanced Features ("Flashcard World" Parity)
+
 *Goal: Add power-user features like portability and smart learning.*
 
 - [ ] **Data Portability**:
-    -   **CSV Import/Export**: Upload a CSV to bulk-create cards.
-    -   **Backup**: Export all data to a JSON file.
+  - **CSV Import/Export**: Upload a CSV to bulk-create cards.
+  - **Backup**: Export all data to a JSON file.
 - [ ] **Spaced Repetition System (SRS)**:
-    -   Implement a basic algorithm (like SM-2) to schedule reviews based on performance.
-    -   "Due Items" view on the Dashboard.
+  - Implement a basic algorithm (like SM-2) to schedule reviews based on performance.
+  - "Due Items" view on the Dashboard.
 - [ ] **Offline Capabilities**:
-    -   PWA (Progressive Web App) manifest.
-    -   Service Worker for offline caching.
+  - PWA (Progressive Web App) manifest.
+  - Service Worker for offline caching.
 
 ### 🔐 Phase 4: Multi-User (The "Product")
+
 *Goal: Allow multiple users to have private data.*
 
 - [ ] **Auth Layer**: JWT-based Authentication.
@@ -99,29 +106,33 @@ We will use a modern, type-safe full-stack environment.
 To help users manage large decks, we will implement the following:
 
 ### **Dashboard (Groups)**
--   **Sort**:
-    -   `Last Edited`: Show groups you worked on recently first.
-    -   `Name (A-Z)`: Alphabetical order.
-    -   `Card Count`: Largest decks first.
+
+- **Sort**:
+  - `Last Edited`: Show groups you worked on recently first.
+  - `Name (A-Z)`: Alphabetical order.
+  - `Card Count`: Largest decks first.
 
 ### **Card List / Study Mode**
--   **Sort**:
-    -   `Added Time`: See the most recently added words.
-    -   `Difficulty`: (Phase 3) Show "Hard" words first.
-    -   `Random`: Essentials for studying.
--   **Search**:
-    -   Real-time text filter (matches `front` or `back` of card).
+
+- **Sort**:
+  - `Added Time`: See the most recently added words.
+  - `Difficulty`: (Phase 3) Show "Hard" words first.
+  - `Random`: Essentials for studying.
+- **Search**:
+  - Real-time text filter (matches `front` or `back` of card).
 
 ---
 
 ## 5. API Design (RESTful)
 
 ### **Auth Routes**
+
 - `POST /api/auth/register`
 - `POST /api/auth/login`
 - `GET /api/auth/me` (Verify token)
 
 ### **Group Routes**
+
 - `GET /api/groups` (List user's groups)
 - `GET /api/groups/:id` (Get details)
 - `POST /api/groups` (Create)
@@ -130,6 +141,7 @@ To help users manage large decks, we will implement the following:
 - `POST /api/groups/import` (CSV Import)
 
 ### **Card Routes**
+
 - `GET /api/groups/:groupId/cards` (Get cards for a specific group, supports `?sort=createdAt&order=desc`)
 - `POST /api/cards` (Create)
 - `PUT /api/cards/:id` (Update content, move groups, or update SRS status)

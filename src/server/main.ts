@@ -1,14 +1,14 @@
-import express from "express";
-import ViteExpress from "vite-express";
+import express from 'express';
+import ViteExpress from 'vite-express';
 
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config();
 
-import app from "./app.js";
-import { connectDB } from "./config/db.js";
+import app from './app.ts';
+import { connectDB } from './config/db.ts';
 
 const PORT = process.env.PORT || 3000;
-console.log("Starting server...");
+console.log('Starting server...');
 console.log(`Port: ${PORT}`);
 
 await connectDB();
