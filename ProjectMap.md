@@ -31,6 +31,7 @@ We will use a modern, type-safe full-stack environment.
 - **Animations**: Animate.css, @vueuse/motion
 - **Utilities**: VueUse, Axios, Tiip.js (Tooltips)
 - **UX Polish**: vue3-spinners, vue-toastification, vue3-perfect-scrollbar
+- **Icons**: iconify @iconify-prerendered Unplugin Icons
 
 ### **Backend** (Server)
 
@@ -49,14 +50,23 @@ We will use a modern, type-safe full-stack environment.
 
 *Goal: A working single-user application running locally.*
 
-- [ ] **Architecture**: Setup Monorepo structure (Client/Server/Shared).
-- [ ] **Database**: Connect to local MongoDB.
-- [ ] **Backend Basic**: Implement CRUD for `Groups` and `Cards`.
-- [ ] **Frontend Basic**:
-  - Landing Page (Simple "Enter App" button).
-  - Dashboard (List of Groups).
-  - Group Detail (List of Cards + Add Card Form).
-  - Card Viewer (Front/Back flip).
+- [x] **Architecture**: Setup Monorepo structure (Vite-Express integration) - **DONE**
+- [x] **Database**: Connect to local MongoDB - **DONE**
+- [/] **Backend Basic**: Implement CRUD for `Groups` and `Cards`.
+  - [x] Card CRUD (via GraphQL) - **DONE**
+  - [ ] Group CRUD - **PENDING**
+- [/] **Frontend Basic**:
+  - [x] Landing Page (DaisyUI Redesign) - **DONE**
+  - [x] Dashboard (GraphQL integrated) - **DONE**
+  - [ ] Group Detail (Placeholder) - **PENDING**
+  - [x] Card Viewer (3D Flip Animation) - **DONE**
+
+### ✅ Special: GraphQL & Developer Experience (New)
+
+- [x] **Server**: Migrated to Apollo Server 4 - **DONE**
+- [x] **IDE**: Ruru GraphQL IDE at `/ruru` - **DONE**
+- [x] **Frontend**: Unified Apollo Client + `@vue/apollo-composable` - **DONE**
+- [x] **Style**: Tailwind CSS 4 + DaisyUI Themes - **DONE**
 
 ### 🚀 Phase 2: The "Study" & "Sort" Experience
 
@@ -66,14 +76,14 @@ We will use a modern, type-safe full-stack environment.
   - **Sort By**: Date Created (Newest/Oldest), Alphabetical (A-Z/Z-A).
   - **Filter By**: Status (New/Learning/Mastered).
 - [ ] **Study Modes** (Inspired by Flashcard World):
-  - **Classic Flashcard**: Flip to see answer.
-  - **Writing Review**: Type the answer and check against the back of the card.
-  - **Multiple Choice**: Select the correct answer from generated options (distractors).
+  - **Classic Flashcard**: Flip to see answer (Core flip logic done).
+  - [ ] **Writing Review**: Type the answer and check against the back of the card.
+  - [ ] **Multiple Choice**: Select the correct answer from generated options (distractors).
 - [ ] **UI/UX Polish**:
-  - Transitions between pages.
-  - Card flip animations.
-  - Loading states (Spinners).
-  - Toast notifications for success/error.
+  - [ ] Transitions between pages.
+  - [x] Card flip animations - **DONE**
+  - [ ] Loading states (Progress indicators partially implemented).
+  - [ ] Toast notifications (Package installed, usage pending in some views).
 
 ### 📦 Phase 3: Advanced Features ("Flashcard World" Parity)
 
@@ -93,10 +103,10 @@ We will use a modern, type-safe full-stack environment.
 
 *Goal: Allow multiple users to have private data.*
 
-- [ ] **Auth Layer**: JWT-based Authentication.
-- [ ] **User Model**: Create User schema.
-- [ ] **Data Ownership**: Associate Groups/Cards with UserIDs.
-- [ ] **Auth UI**: Login/Register pages.
+- [x] **Auth Layer**: JWT-based Authentication - **DONE**
+- [x] **User Model**: Create User schema - **DONE**
+- [ ] **Data Ownership**: Associate Groups/Cards with UserIDs (Logic in resolvers partially there).
+- [x] **Auth UI**: Premium Login/Register pages - **DONE**
 - [ ] **Community**: Share decks with other users (public/private toggle).
 
 ---
