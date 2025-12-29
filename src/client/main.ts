@@ -1,11 +1,11 @@
 // The Project Style Files
 import "./styles/vendor/tailwind.css";
-import "./styles/vendor/daisyui.css";
 import "./styles/main.sass";
 
-import { createApp } from "vue";
+import { createApp, provide } from "vue";
 import { createPinia } from "pinia";
-// import { ApolloServer } from "apollo-server-express";
+import { DefaultApolloClient } from "@vue/apollo-composable";
+import { apolloClient } from "./apollo";
 
 import App from "./App.vue";
 import router from "./router/index";
@@ -16,6 +16,9 @@ const pinia = createPinia();
 
 app.use(pinia);
 app.use(router);
+
+// Provide Apollo Client to the entire app
+app.provide(DefaultApolloClient, apolloClient);
 
 // Check authentication status on app init
 const authStore = useAuthStore();

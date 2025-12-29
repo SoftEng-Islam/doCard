@@ -13,8 +13,9 @@ console.log(`Port: ${PORT}`);
 
 await connectDB();
 
-import { createApolloServer } from './graphql/index.ts';
-const server = await createApolloServer();
-server.applyMiddleware({ app: app as any });
+import { setupGraphQL } from './graphql/index.ts';
+await setupGraphQL(app as any);
 
-ViteExpress.listen(app, 3000, () => console.log(`Server running on http://localhost:${PORT}`));
+app.get('/api/ping', (req, res) => res.send('pong'));
+
+ViteExpress.listen(app, PORT as number, () => console.log(`Server running on http://localhost:${PORT}`));

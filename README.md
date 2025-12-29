@@ -66,7 +66,7 @@ In a new terminal window, run:
 pnpm run dev
 ```
 - **App**: [http://localhost:3000](http://localhost:3000)
-- **GraphQL Interactive Sandbox**: [http://localhost:3000/graphql](http://localhost:3000/graphql)
+- **Ruru GraphQL IDE**: [http://localhost:3000/ruru](http://localhost:3000/ruru)
 
 ---
 
@@ -80,7 +80,7 @@ The frontend follows a **Feature-Based Architecture** to keep the domain logic i
 - `pages`: Root view components (Dashboard, Home, Login).
 
 ### Backend (`src/server`)
-- `graphql/`: Contains the GraphQL schema (`typeDefs.ts`) and business logic (`resolvers.ts`).
+- `graphql/`: Contains the GraphQL schema (`typeDefs.ts`), business logic (`resolvers.ts`), and Ruru setup (`index.ts`).
 - `models/`: Mongoose schemas for Users and Cards.
 - `middleware/`: Express middleware for authentication and logging.
 
@@ -96,6 +96,6 @@ The frontend follows a **Feature-Based Architecture** to keep the domain logic i
 
 ## 📜 Usage Tips
 
-- **API Testing**: Use the Apollo Sandbox at `/graphql` to test queries like `getCards` or mutations like `login`.
+- **API Testing**: Use the Ruru IDE at `/ruru` to test queries like `getCards` or mutations like `login`. Set the endpoint to `/graphql` if not default.
 - **Theme**: The application includes a premium theme controller found in `features/shared/themeController`.
 - **Aliases**: Use `@/` to reference the `src/client` directory and `shared/` to reference the root shared folder.

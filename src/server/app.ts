@@ -7,11 +7,13 @@ import { errorHandler } from './middleware/error.ts';
 const app = express();
 
 // app.use(cors());
-app.use(express.json());
+// Middleware will be added in main.ts to control order
 
 // Routes - Replaced by GraphQL
 // app.use('/api', authRoutes);
 // app.use('/api/cards', cardsRoutes);
+
+app.get('/ping', (req, res) => res.send('pong'));
 
 app.use(errorHandler);
 

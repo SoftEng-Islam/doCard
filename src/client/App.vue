@@ -1,7 +1,15 @@
 <script setup lang="ts">
-// Main App component - renders the router view
+import { onMounted } from 'vue';
+import MainLayout from './layouts/MainLayout.vue';
+import { Themes } from './utils/Themes.js';
+
+onMounted(() => {
+  Themes.apply(Themes.detect());
+});
 </script>
 
 <template>
-	<RouterView />
+	<MainLayout>
+		<RouterView />
+	</MainLayout>
 </template>
