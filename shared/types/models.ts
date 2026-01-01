@@ -21,9 +21,9 @@ export interface IGroup {
 
 export interface ICard {
 	_id: string;
-	groupId: string;
-	front: string;
-	back: string;
+	groupId?: string;
+	word: string;
+	meaning: string;
 	status?: 'new' | 'learning' | 'mastered';
 	difficulty?: 'easy' | 'medium' | 'hard';
 	nextReview?: Date;

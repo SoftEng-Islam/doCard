@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import api from '@/features/cards/services/cards.service';
+import { useToast } from 'vue-toastification';
 
 const emit = defineEmits<{
 	(e: 'success', card: any): void;
 }>();
 
+const toast = useToast();
 const word = ref('');
 const meaning = ref('');
 const error = ref<string | null>(null);
@@ -18,15 +20,21 @@ async function submit() {
 		return;
 	}
 
-	const card = await api.createCard({
-		word: word.value,
-		meaning: meaning.value
-	});
+	try {
+		const card = await api.createCard({
+			word: word.value,
+			meaning: meaning.value
+		});
 
-	emit('success', card);
+		toast.success('Flashcard created successfully!');
+		emit('success', card);
 
-	word.value = '';
-	meaning.value = '';
+		word.value = '';
+		meaning.value = '';
+	} catch (err) {
+		toast.error('Failed to create flashcard');
+		console.error(err);
+	}
 }
 </script>
 
@@ -50,14 +58,14 @@ async function submit() {
 
       <div class="flex flex-col gap-1.5">
         <label class="text-[10px] font-bold uppercase tracking-widest opacity-50 px-1">Term / Word</label>
-        <label class="input input-border flex items-center gap-2">
+        <label class="input input-border flex items-center gap-2" v-tippy="{ content: 'The word or phrase you want to memorize', placement: 'right' }">
           <input v-model="word" type="text" placeholder="e.g. Ephemeral" class="grow text-sm" />
         </label>
       </div>
 
       <div class="flex flex-col gap-1.5">
         <label class="text-[10px] font-bold uppercase tracking-widest opacity-50 px-1">Definition / Meaning</label>
-        <textarea v-model="meaning" class="textarea textarea-border h-24 text-sm resize-none" placeholder="Enter meaning here..."></textarea>
+        <textarea v-model="meaning" class="textarea textarea-border h-24 text-sm resize-none" placeholder="Enter meaning here..." v-tippy="{ content: 'The definition, translation, or explanation', placement: 'right' }"></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary btn-sm btn-block mt-2 font-bold uppercase tracking-tight shadow-lg shadow-primary/20">

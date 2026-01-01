@@ -11,6 +11,7 @@ import express from 'express';
 
 export const setupGraphQL = async (app: Express) => {
   const schema = makeExecutableSchema({
+    // Definitions of types of data
     typeDefs,
     resolvers,
   });

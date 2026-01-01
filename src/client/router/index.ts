@@ -6,6 +6,18 @@ const url = new URL(import.meta.env.BASE_URL, window.location.origin);
 const router = createRouter({
 	history: createWebHistory(url.pathname),
 	routes: routes,
+	linkActiveClass: "active",
+	linkExactActiveClass: "exact-active",
+	scrollBehavior(to, from, savedPosition) {
+		console.log(to, from, savedPosition);
+		if (savedPosition) {
+			return savedPosition;
+		}
+		return {
+			left: 0,
+			top: 0,
+		};
+	},
 });
 
 // Navigation guards

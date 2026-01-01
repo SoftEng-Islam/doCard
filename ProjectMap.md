@@ -1,5 +1,19 @@
 # DoCard Project Map & Implementation Plan
 
+> **Project Name**: DoCard
+> **Version**: 1.0.0
+> **Date**: 2025-12-29
+> **Author**: DoCard Team
+> **License**: MIT
+
+Note: This is a work in progress and is not yet ready for production.
+
+We must follow the project map and implement the features in the order they are listed.
+
+Rules.md file is available in the root directory.
+and we must follow the rules in the Rules.md file.
+
+
 > **DoCard**: A focused, efficient application for memorizing words, phrases, and concepts.
 > *Simple. Fast. Distraction-free.*
 
@@ -29,7 +43,7 @@ We will use a modern, type-safe full-stack environment.
 - **Routing**: Vue Router
 - **Styling**: Tailwind CSS v4 + DaisyUI (Themes support)
 - **Animations**: Animate.css, @vueuse/motion
-- **Utilities**: VueUse, Axios, Tiip.js (Tooltips)
+- **Utilities**: VueUse, Axios, tippy.js (Tooltips)
 - **UX Polish**: vue3-spinners, vue-toastification, vue3-perfect-scrollbar
 - **Icons**: iconify @iconify-prerendered Unplugin Icons
 
@@ -55,11 +69,17 @@ We will use a modern, type-safe full-stack environment.
 - [/] **Backend Basic**: Implement CRUD for `Groups` and `Cards`.
   - [x] Card CRUD (via GraphQL) - **DONE**
   - [ ] Group CRUD - **PENDING**
+  - [ ] Admin Section
+    - [ ] Dashboard
+    - [ ] Users list
 - [/] **Frontend Basic**:
   - [x] Landing Page (DaisyUI Redesign) - **DONE**
   - [x] Dashboard (GraphQL integrated) - **DONE**
   - [ ] Group Detail (Placeholder) - **PENDING**
-  - [x] Card Viewer (3D Flip Animation) - **DONE**
+  - [x] Card Viewer (3D Flip Animation) **PENDING**
+  - [ ] Card Viewer Need some fixes
+  - [ ] Card Form popup with vue-toastification if the card created
+  - [ ] Add tippy in some parts to help users
 
 ### ✅ Special: GraphQL & Developer Experience (New)
 
