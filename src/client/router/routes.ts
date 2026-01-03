@@ -54,7 +54,7 @@ export default [
 		],
 	},
 	{
-		path: "/group/:id",
+		path: "/groups/:id",
 		name: "group-detail",
 		component: GroupDetailView,
 		meta: { requiresAuth: true },

@@ -12,6 +12,11 @@ const flashcardSchema = new mongoose.Schema(
 			required: true,
 			trim: true,
 		},
+		groupId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Group",
+			required: true,
+		},
 	},
 	{ timestamps: true },
 );

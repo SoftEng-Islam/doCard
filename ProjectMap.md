@@ -13,9 +13,8 @@ We must follow the project map and implement the features in the order they are 
 Rules.md file is available in the root directory.
 and we must follow the rules in the Rules.md file.
 
-
 > **DoCard**: A focused, efficient application for memorizing words, phrases, and concepts.
-> *Simple. Fast. Distraction-free.*
+> _Simple. Fast. Distraction-free._
 
 ## 1. Project Vision & Goals
 
@@ -62,24 +61,27 @@ We will use a modern, type-safe full-stack environment.
 
 ### ✅ Phase 1: MVP Core (The "Walking Skeleton")
 
-*Goal: A working single-user application running locally.*
+_Goal: A working single-user application running locally._
 
 - [x] **Architecture**: Setup Monorepo structure (Vite-Express integration) - **DONE**
 - [x] **Database**: Connect to local MongoDB - **DONE**
 - [/] **Backend Basic**: Implement CRUD for `Groups` and `Cards`.
   - [x] Card CRUD (via GraphQL) - **DONE**
-  - [ ] Group CRUD - **PENDING**
+  - [x] Group CRUD - **DONE**
   - [ ] Admin Section
     - [ ] Dashboard
     - [ ] Users list
 - [/] **Frontend Basic**:
   - [x] Landing Page (DaisyUI Redesign) - **DONE**
   - [x] Dashboard (GraphQL integrated) - **DONE**
-  - [ ] Group Detail (Placeholder) - **PENDING**
-  - [x] Card Viewer (3D Flip Animation) **PENDING**
-  - [ ] Card Viewer Need some fixes
-  - [ ] Card Form popup with vue-toastification if the card created
-  - [ ] Add tippy in some parts to help users
+  - [x] Group Detail (Placeholder) - **DONE**
+  - [x] Card Viewer (3D Flip Animation) - **DONE**
+  - [x] Card Viewer Need some fixes - **DONE**
+  - [x] Card Form popup with vue-toastification if the card created - **DONE**
+  - [x] Add tippy in some parts to help users - **DONE**
+  - [x] Study Page to add our Study Modes
+    - [ ] section for modes to enable/disable like write the answer, chose the answer, etc..
+    - [ ] below list of groups to start and each group must have a progress
 
 ### ✅ Special: GraphQL & Developer Experience (New)
 
@@ -90,13 +92,13 @@ We will use a modern, type-safe full-stack environment.
 
 ### 🚀 Phase 2: The "Study" & "Sort" Experience
 
-*Goal: Make it actually useful for learning and organizing.*
+_Goal: Make it actually useful for learning and organizing._
 
 - [ ] **Sorting & Filtering**:
   - **Sort By**: Date Created (Newest/Oldest), Alphabetical (A-Z/Z-A).
   - **Filter By**: Status (New/Learning/Mastered).
-- [ ] **Study Modes** (Inspired by Flashcard World):
-  - **Classic Flashcard**: Flip to see answer (Core flip logic done).
+- [/] **Study Modes** (Inspired by Flashcard World):
+  - [x] **Classic Flashcard**: Flip to see answer (Core flip logic done).
   - [ ] **Writing Review**: Type the answer and check against the back of the card.
   - [ ] **Multiple Choice**: Select the correct answer from generated options (distractors).
 - [ ] **UI/UX Polish**:
@@ -107,7 +109,7 @@ We will use a modern, type-safe full-stack environment.
 
 ### 📦 Phase 3: Advanced Features ("Flashcard World" Parity)
 
-*Goal: Add power-user features like portability and smart learning.*
+_Goal: Add power-user features like portability and smart learning._
 
 - [ ] **Data Portability**:
   - **CSV Import/Export**: Upload a CSV to bulk-create cards.
@@ -121,7 +123,7 @@ We will use a modern, type-safe full-stack environment.
 
 ### 🔐 Phase 4: Multi-User (The "Product")
 
-*Goal: Allow multiple users to have private data.*
+_Goal: Allow multiple users to have private data._
 
 - [x] **Auth Layer**: JWT-based Authentication - **DONE**
 - [x] **User Model**: Create User schema - **DONE**

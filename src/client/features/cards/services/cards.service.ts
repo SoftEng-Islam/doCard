@@ -1,49 +1,52 @@
-import { apolloClient } from '@/apollo';
-import { gql } from '@apollo/client/core';
+import { apolloClient } from "@/apollo";
+import { gql } from "@apollo/client/core";
 
 const GET_CARDS_QUERY = gql`
-  query GetCards {
-    getCards {
-      _id
-      word
-      meaning
-      createdAt
-      updatedAt
-    }
-  }
+	query GetCards($groupId: ID) {
+		getCards(groupId: $groupId) {
+			_id
+			word
+			meaning
+			groupId
+			createdAt
+			updatedAt
+		}
+	}
 `;
 
 const CREATE_CARD_MUTATION = gql`
-  mutation CreateCard($word: String!, $meaning: String!) {
-    createCard(word: $word, meaning: $meaning) {
-      _id
-      word
-      meaning
-      createdAt
-      updatedAt
-    }
-  }
+	mutation CreateCard($word: String!, $meaning: String!, $groupId: ID!) {
+		createCard(word: $word, meaning: $meaning, groupId: $groupId) {
+			_id
+			word
+			meaning
+			groupId
+			createdAt
+			updatedAt
+		}
+	}
 `;
 
 const DELETE_CARD_MUTATION = gql`
-  mutation DeleteCard($id: ID!) {
-    deleteCard(id: $id)
-  }
+	mutation DeleteCard($id: ID!) {
+		deleteCard(id: $id)
+	}
 `;
 
 export default {
-	async getCards() {
+	async getCards(groupId?: string) {
 		const { data } = await apolloClient.query<any>({
 			query: GET_CARDS_QUERY,
-			fetchPolicy: 'network-only'
+			variables: { groupId },
+			fetchPolicy: "network-only",
 		});
 		return data.getCards;
 	},
 
-	async createCard(cardData: { word: string; meaning: string }) {
+	async createCard(cardData: { word: string; meaning: string; groupId: string }) {
 		const { data } = await apolloClient.mutate<any>({
 			mutation: CREATE_CARD_MUTATION,
-			variables: cardData
+			variables: cardData,
 		});
 		return data.createCard;
 	},
@@ -51,7 +54,7 @@ export default {
 	async deleteCard(id: string) {
 		await apolloClient.mutate({
 			mutation: DELETE_CARD_MUTATION,
-			variables: { id }
+			variables: { id },
 		});
 	},
 };
