@@ -4,7 +4,7 @@ import { useGroupsStore } from '@/features/groups/groups.store';
 import { useToast } from 'vue-toastification';
 
 const emit = defineEmits<{
-	(e: 'success', group: any): void;
+    (e: 'success', group: any): void;
     (e: 'cancel'): void;
 }>();
 
@@ -16,26 +16,31 @@ const description = ref('');
 const loading = ref(false);
 
 async function submit() {
-	if (!name.value) return;
+    if (!name.value) return;
 
     loading.value = true;
-	try {
-		const group = await store.createGroup(name.value, description.value);
-		toast.success('Group created successfully!');
-		emit('success', group);
-		name.value = '';
-		description.value = '';
-	} catch (err) {
-		toast.error('Failed to create group');
-		console.error(err);
-	} finally {
+    let group;
+    try {
+        group = await store.createGroup(name.value, description.value);
+    } catch (err: any) {
+        const msg = err.message || 'Failed to create group';
+        toast.error(msg);
+        console.error(err);
+    } finally {
         loading.value = false;
+    }
+
+    if (group) {
+        toast.success('Group created successfully!');
+        emit('success', group);
+        name.value = '';
+        description.value = '';
     }
 }
 </script>
 
 <template>
-	<form @submit.prevent="submit" class="flex flex-col gap-4">
+    <form @submit.prevent="submit" class="flex flex-col gap-4">
         <div class="form-control w-full">
             <label class="label">
                 <span class="label-text font-bold uppercase text-xs opacity-50">Group Name</span>
@@ -57,5 +62,5 @@ async function submit() {
                 Create Group
             </button>
         </div>
-	</form>
+    </form>
 </template>

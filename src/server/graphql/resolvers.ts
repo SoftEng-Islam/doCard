@@ -115,7 +115,30 @@ export const resolvers = {
 				});
 			}
 			// Ideally add userId here
-			return await Group.create({ name, description });
+			const group = await Group.create({
+				name,
+				description,
+				userId: user.id,
+			});
+
+			// Re-fetch to ensure we have the exact same object structure as getGroups (including dates)
+			const foundGroup = await Group.findById(group._id);
+			if (!foundGroup) {
+				throw new GraphQLError("Group created but not found", {
+					extensions: { code: "INTERNAL_SERVER_ERROR" },
+				});
+			}
+
+			// Return plain object with cardCount and explicit string conversions
+			const doc = foundGroup.toObject();
+			return {
+				...doc,
+				_id: doc._id.toString(),
+				userId: doc.userId ? doc.userId.toString() : "",
+				createdAt: doc.createdAt.toISOString(),
+				updatedAt: doc.updatedAt.toISOString(),
+				cardCount: 0,
+			};
 		},
 
 		updateGroup: async (_: any, { id, name, description }: any, { user }: any) => {

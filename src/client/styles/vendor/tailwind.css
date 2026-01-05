@@ -27,23 +27,24 @@
  */
 @layer base {
 
-	*,
+	/* *,
 	::after,
 	::before,
 	::backdrop,
-	::file-selector-button {
-		/* ... */
-	}
+	::file-selector-button {} */
 
 	body {
-		/* ... */
+		font-family: 'Karla', Arial, sans-serif;
+		@apply relative bg-(--LTheme2) dark:bg-(--Theme2);
 	}
 
-	hr {
-		/* ... */
+	/* .dark ::selection {
+		@apply bg-(--dark-color-light) text-white;
 	}
 
-	/* ... */
+	::selection {
+		@apply bg-(--light-color-light) text-black;
+	} */
 }
 
 /**

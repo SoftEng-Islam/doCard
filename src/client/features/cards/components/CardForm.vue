@@ -4,7 +4,7 @@ import api from '@/features/cards/services/cards.service';
 import { useToast } from 'vue-toastification';
 
 const props = defineProps<{
-    groupId: string;
+	groupId: string;
 }>();
 
 const emit = defineEmits<{
@@ -24,22 +24,25 @@ async function submit() {
 		return;
 	}
 
+	let card;
 	try {
-		const card = await api.createCard({
+		card = await api.createCard({
 			word: word.value,
 			meaning: meaning.value,
-            groupId: props.groupId
+			groupId: props.groupId
 		});
-
-		toast.success('Flashcard created successfully!');
-		emit('success', card);
-
-		word.value = '';
-		meaning.value = '';
 	} catch (err) {
 		toast.error('Failed to create flashcard');
 		console.error(err);
+		return;
 	}
+
+	// Success case
+	toast.success('Flashcard created successfully!');
+	emit('success', card);
+
+	word.value = '';
+	meaning.value = '';
 }
 </script>
 

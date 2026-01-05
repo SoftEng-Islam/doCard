@@ -8,7 +8,7 @@
 
 Note: This is a work in progress and is not yet ready for production.
 
-We must follow the project map and implement the features in the order they are listed.
+We must follow the Rules.md file and implement the features in the order they are listed.
 
 Rules.md file is available in the root directory.
 and we must follow the rules in the Rules.md file.
@@ -180,6 +180,10 @@ To help users manage large decks, we will implement the following:
 - `DELETE /api/cards/:id` (Delete)
 
 ---
+
+## Errors to fix
+
+1. [tsconfig.json] Option 'baseUrl' is deprecated and will stop functioning in TypeScript 7.0.
 
 ## 6. Detailed Folder & File Structure
 

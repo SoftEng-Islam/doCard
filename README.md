@@ -30,19 +30,22 @@ A modern, full-stack flashcard learning assistant built with a focus on speed, m
 
 ### Installation
 
-1.  **Clone the repository**:
+1. **Clone the repository**:
+
     ```bash
     git clone <repository-url>
     cd proj.doCard
     ```
 
-2.  **Install dependencies**:
+2. **Install dependencies**:
+
     ```bash
     pnpm install
     ```
 
-3.  **Configure Environment Variables**:
+3. **Configure Environment Variables**:
     Create a `.env` file in the root directory and add the following:
+
     ```env
     PORT=3000
     MONGODB_URI=mongodb://localhost:27018/docard  # Matches your local mongod port
