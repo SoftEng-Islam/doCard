@@ -11,7 +11,12 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = with pkgs; [
+    git
+    pnpm
+    atuin
+    bat
+  ];
 
   # https://devenv.sh/languages/
   languages.javascript.enable = true;
@@ -19,7 +24,6 @@
   languages.javascript.lsp.enable = true;
   languages.javascript.nodejs.enable = true;
   languages.javascript.pnpm.enable = true;
-  languages.javascript.pnpm.install.enable = false;
 
   # https://devenv.sh/processes/
   # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
