@@ -7,10 +7,6 @@ dist/
 dist-ssr/
 coverage/
 
-# Database / Local Storage
-mongodb-data/
-mongodb-socket/
-
 # Environment Variables
 .env
 .env.local
