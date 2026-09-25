@@ -1,0 +1,24 @@
+{
+  "name": "docard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DoCard - Learning and flashcard platform",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @docard/web --filter @docard/server dev",
+    "dev:web": "pnpm --filter @docard/web dev",
+    "dev:server": "pnpm --filter @docard/server dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "format": "pnpm exec prettier --write ."
+  },
+  "packageManager": "pnpm@12.5.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  }
+}

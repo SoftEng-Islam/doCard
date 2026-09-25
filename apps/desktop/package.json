@@ -1,0 +1,10 @@
+{
+  "name": "@docard/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo \"Desktop app not configured yet\"",
+    "build": "echo \"Desktop app not configured yet\""
+  }
+}
